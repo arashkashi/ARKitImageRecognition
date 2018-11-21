@@ -90,7 +90,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let plane = SCNPlane(width: referenceImage.physicalSize.width,
                                  height: referenceImage.physicalSize.height)
             let planeNode = SCNNode(geometry: plane)
-            planeNode.opacity = 0.25
+            let image = UIImage(named: "iMac 21.5-inch")
+            planeNode.geometry?.firstMaterial?.diffuse.contents = image
+//            planeNode.opacity = 0.25
             
             /*
              `SCNPlane` is vertically oriented in its local coordinate space, but
@@ -103,7 +105,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
              Image anchors are not tracked after initial detection, so create an
              animation that limits the duration for which the plane visualization appears.
              */
-            planeNode.runAction(self.imageHighlightAction)
+//            planeNode.runAction(self.imageHighlightAction)
             
             // Add the plane visualization to the scene.
             node.addChildNode(planeNode)
